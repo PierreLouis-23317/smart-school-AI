@@ -1,0 +1,24 @@
+# Jupyter
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Dataset (local uniquement)
+student_dataset/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environnements
+.env
+.venv
+venv/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
