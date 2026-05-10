@@ -1,109 +1,171 @@
-# Authors
+# AI Lab Project – Smart School ECAM
+
+## Authors
 
 - **Félix de Crouy Chanel** – 22176
 - **Louis Pierre** – 23317
 
+## Course Information
 
-# AI Lab Project – Smart School ECAM
+- **School:** ECAM Brussels Engineering School
+- **Course:** Artificial Intelligence – 4eoai40
+- **Academic year:** 2025–2026
 
-This repository contains the code developed for the Artificial Intelligence lab project at ECAM Brussels Engineering School.
+## Project Description
 
-The project was carried out as part of the course **Artificial Intelligence – 4eoai40** during the academic year **2025–2026**.
+This repository contains the code developed for the AI/ML lab project **Smart School ECAM**.
 
-
-
-## Project Overview
-
-The objective of this project is to apply machine learning and deep learning methods to two practical problems related to the Smart School ECAM project.
-
-The work is divided into two main parts:
+The project is divided into two main parts:
 
 1. **Failure prediction**  
-   The goal is to predict student exam scores using tabular data. The final objective is to identify students who may be at risk of failing, so that additional support could be provided.
+   The objective is to predict student exam scores from tabular data. The final goal is to identify students who may be at risk of failing, so that additional support could be proposed.
 
 2. **Automatic correction with OCR**  
-   The goal is to recognize handwritten digits and characters from images. This part uses image classification models, including a simple neural network and a convolutional neural network.
+   The objective is to recognize handwritten digits and characters from image data. Two neural network approaches are tested: a Multilayer Perceptron (MLP) and a Convolutional Neural Network (CNN).
 
-   
-## Project Structure
+## Repository Structure
 
-- analyse_donnée.ipynb: exploratory data analysis on the student dataset
-- modele_updated_clean.ipynb: cleaned end-to-end modeling pipeline for score/failure prediction
-- hyperparameter_optimization_clean.ipynb: hyperparameter tuning and comparison of regression models
-- image.ipynb: loading, preprocessing, and modeling for image-based character recognition
-- student_dataset/student_failure/train.csv: tabular dataset for student performance
-- student_dataset/image_data/: raw IDX image and label files
-- figures_tuning/: generated figures used during tuning
+```text
+.
+├── 01_eda.ipynb
+├── 02_hyperparameter_optimization.ipynb
+├── 03_failure_prediction_model.ipynb
+├── 04_ocr_image_recognition.ipynb
+├── student_dataset/
+│   ├── student_failure/
+│   │   └── train.csv
+│   └── image_data/
+├── figures_tuning/
+└── README.md
+```
 
-## Notebook Guide
+## Notebook Description
 
-### 1) analyse_donnée.ipynb
-Purpose:
-- Explore distributions and relationships in the student dataset
-- Build an interpretable target grouping (fail/risk/pass)
-- Visualize key correlations and variable effects
+### `01_eda.ipynb`
 
-Typical outputs:
-- Class distributions
-- Boxplots and regression plots
-- Correlation heatmaps
+Exploratory analysis of the student performance dataset.
 
-### 2) modele_updated_clean.ipynb
-Purpose:
-- Build and compare predictive models for exam performance
-- Apply preprocessing consistently (missing values, encoding, feature handling)
-- Evaluate model quality with standard regression metrics
+Main contents:
 
-Typical outputs:
-- MAE, RMSE, and R2 comparisons
-- Final model performance visualizations
+- dataset loading and first inspection;
+- missing value analysis;
+- distribution of numerical and categorical variables;
+- creation of the fail/risk/pass categories;
+- correlation analysis;
+- feature importance using Mutual Information.
 
-### 3) hyperparameter_optimization_clean.ipynb
-Purpose:
-- Tune model hyperparameters with cross-validation
-- Select best configurations based on validation performance
-- Produce summary tables and figures for reporting
+This notebook supports the data exploration and feature selection parts of the report.
 
-Typical outputs:
-- Best parameter sets
-- Cross-validated score summaries
-- Comparison plots saved in figures_tuning/
+### `02_hyperparameter_optimization.ipynb`
 
-### 4) image.ipynb
-Purpose:
-- Load raw IDX image files and labels
-- Preprocess image tensors for training
-- Train and evaluate image classifiers
+Hyperparameter tuning for the failure prediction models.
 
-Typical outputs:
-- Dataset shape checks
-- Sample image visualizations
-- Classification performance summaries
+Main contents:
 
-## Data Notes
+- baseline definition;
+- RandomizedSearchCV for broad exploration;
+- GridSearchCV for local refinement;
+- comparison of optimized models;
+- selection of the best hyperparameters.
 
-- Student data path used by notebooks:
-  - student_dataset/student_failure/train.csv
-- Image data path used by notebooks:
-  - student_dataset/image_data/
+The optimized models include Ridge Regression, Decision Tree and Random Forest.
 
-If you move the project folder, update any absolute paths in notebooks to relative paths for portability.
+### `03_failure_prediction_model.ipynb`
 
-## How to Use
+Main notebook for the student score prediction task.
 
-1. Open the repository in VS Code.
-2. Open the notebook you want to present.
-3. Run cells in order when execution is needed.
+Main contents:
 
-For presentation-only review, notebooks can also be read without execution.
+- preprocessing pipeline;
+- train/test split;
+- model training;
+- comparison between baseline, classical ML models and deep learning model;
+- evaluation using MAE, RMSE and R²;
+- analysis of prediction errors;
+- overfitting and underfitting analysis.
 
-## Report-Oriented Summary
+The best final model is Ridge Regression, which gives the lowest prediction error while remaining simple and stable.
 
-This project demonstrates:
+### `04_ocr_image_recognition.ipynb`
 
-- Practical EDA and feature interpretation on tabular data
-- Regression model building and evaluation
-- Hyperparameter optimization with cross-validation
-- Basic image recognition workflow on raw IDX data
+Notebook for the OCR part of the project.
 
-Together, these notebooks provide a complete pipeline from data understanding to model comparison and communication-ready visual results.
+Main contents:
+
+- loading IDX image and label files;
+- image visualization and preprocessing;
+- normalization of pixel values;
+- training of an MLP model;
+- training of a CNN model;
+- comparison of OCR accuracy;
+- analysis of the most frequent prediction errors.
+
+The CNN gives the best OCR performance because it uses the spatial structure of the images.
+
+## Data
+
+The project uses two datasets:
+
+### Student performance dataset
+
+Path:
+
+```text
+student_dataset/student_failure/train.csv
+```
+
+This dataset is used for the failure prediction part. It contains student-related variables such as study hours, class attendance, sleep, diploma and exam score.
+
+### OCR image dataset
+
+Path:
+
+```text
+student_dataset/image_data/
+```
+
+This dataset contains grayscale images of handwritten digits and characters stored in IDX format.
+
+## How to Run the Project
+
+1. Open the project folder in VS Code or JupyterLab.
+2. Install the required Python libraries if needed.
+3. Run the notebooks in the following order:
+
+```text
+01_eda.ipynb
+02_hyperparameter_optimization.ipynb
+03_failure_prediction_model.ipynb
+04_ocr_image_recognition.ipynb
+```
+
+The notebooks are organized to follow the same logic as the report: data exploration, preprocessing, model tuning, model evaluation and OCR classification.
+
+## Main Results
+
+### Failure prediction
+
+Several models were compared:
+
+- baseline model;
+- Ridge Regression;
+- Decision Tree Regressor;
+- Random Forest Regressor;
+- Deep Learning model.
+
+Ridge Regression obtained the best overall performance. The result suggests that the dataset has a relatively regular and almost linear structure, so a simple regularized model is sufficient.
+
+### OCR
+
+Two models were compared:
+
+- Multilayer Perceptron (MLP);
+- Convolutional Neural Network (CNN).
+
+The CNN obtained the best accuracy. The main errors occur between visually similar characters such as `O` and `0`, `l` and `1`, or `S` and `5`.
+
+## Notes
+
+Some older notebooks may still exist in the working folder, but the clean version of the project is based on the four notebooks listed above.
+
+If the project folder is moved, paths to the datasets may need to be adapted in the notebooks.
