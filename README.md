@@ -159,13 +159,7 @@ Two models were compared:
 
 The CNN obtained the best accuracy. The main errors occur between visually similar characters such as `O` and `0`, `l` and `1`, or `S` and `5`.
 
-## Notes
-
-Some older notebooks may still exist in the working folder, but the clean version of the project is based on the four notebooks listed above.
-
-If the project folder is moved, paths to the datasets may need to be adapted in the notebooks.
-
 
 ## AI use
 
-AI was use in this project.
+AI was used in this project to help structure the code, improve explanations, and support debugging. The generated content was reviewed and adapted by the authors.
