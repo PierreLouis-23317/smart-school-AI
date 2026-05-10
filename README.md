@@ -31,11 +31,6 @@ The project is divided into two main parts:
 ├── 02_hyperparameter_optimization.ipynb
 ├── 03_failure_prediction_model.ipynb
 ├── 04_ocr_image_recognition.ipynb
-├── student_dataset/
-│   ├── student_failure/
-│   │   └── train.csv
-│   └── image_data/
-├── figures_tuning/
 └── README.md
 ```
 
@@ -169,3 +164,8 @@ The CNN obtained the best accuracy. The main errors occur between visually simil
 Some older notebooks may still exist in the working folder, but the clean version of the project is based on the four notebooks listed above.
 
 If the project folder is moved, paths to the datasets may need to be adapted in the notebooks.
+
+
+## AI use
+
+AI was use in this project.
