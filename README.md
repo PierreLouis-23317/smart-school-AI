@@ -2,8 +2,8 @@
 
 ## Authors
 
-- **Félix de Crouy Chanel** – 22176
-- **Louis Pierre** – 23317
+- **de Crouy Chanel Félix** – 22176
+- **Pierre Louis** – 23317
 
 ## Course Information
 
